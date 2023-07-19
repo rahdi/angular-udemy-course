@@ -6,7 +6,6 @@ import {
   RecipeListComponent,
 } from './components';
 import { RecipeBookComponent } from './recipe-book.component';
-import { SharedModule } from 'src/app/shared';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,7 @@ import { SharedModule } from 'src/app/shared';
     RecipeDetailComponent,
     RecipeBookComponent,
   ],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule],
   exports: [RecipeBookComponent],
   bootstrap: [RecipeBookComponent],
 })
