@@ -2,7 +2,11 @@
   <div class="col-md-5">
     <app-recipe-list (openRecipe)="onOpenRecipe($event)"></app-recipe-list>
   </div>
-  <div class="col-md-7" *ngIf="recipeDetails">
-    <app-recipe-detail [recipe]="recipeDetails"></app-recipe-detail>
+  <div class="col-md-7">
+    <app-recipe-detail
+      *ngIf="recipeSelected; else infoText"
+      [recipe]="recipeSelected"
+    ></app-recipe-detail>
+    <ng-template #infoText><p>Please select a recipe!</p></ng-template>
   </div>
 </div>

@@ -7,9 +7,9 @@ import { Recipe } from './models';
   styleUrls: ['./recipe-book.component.css'],
 })
 export class RecipeBookComponent {
-  recipeDetails?: Recipe;
+  recipeSelected?: Recipe;
 
-  onOpenRecipe(recipeDetails: Recipe) {
-    this.recipeDetails = recipeDetails;
+  onOpenRecipe(recipeSelected: Recipe) {
+    this.recipeSelected = recipeSelected;
   }
 }

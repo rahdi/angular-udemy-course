@@ -11,7 +11,7 @@
     <app-recipe-item
       *ngFor="let recipeElement of recipes"
       [recipe]="recipeElement"
-      (openRecipe)="onOpenRecipe($event)"
+      (openRecipe)="onOpenRecipe(recipeElement)"
     ></app-recipe-item>
   </div>
 </div>
