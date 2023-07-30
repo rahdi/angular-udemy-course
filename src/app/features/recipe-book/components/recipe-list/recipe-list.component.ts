@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Recipe } from '../../models';
 
 @Component({
@@ -7,6 +7,7 @@ import { Recipe } from '../../models';
   styleUrls: ['./recipe-list.component.css'],
 })
 export class RecipeListComponent {
+  @Output() openRecipe = new EventEmitter<Recipe>();
   recipes: Recipe[] = [
     new Recipe(
       'A Test Recipe 1',
@@ -34,4 +35,8 @@ export class RecipeListComponent {
       'https://img.freepik.com/free-vector/watercolor-recipe-concept_52683-37923.jpg?w=1380&t=st=1690028915~exp=1690029515~hmac=a5dd4d47a68c33a5ab565ad5b7e2c6d1b26e3ec1144e1c3dc18776f6220089c7'
     ),
   ];
+
+  onOpenRecipe(recipeDetails: Recipe) {
+    this.openRecipe.emit(recipeDetails);
+  }
 }

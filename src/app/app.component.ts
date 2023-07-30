@@ -7,11 +7,10 @@ import { Route } from './shared';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  pseudoRoute: Route = Route.Home;
+  pseudoRoute: Route = Route.Recipes;
 
   onChangeRoute(newRoute: Route) {
     this.pseudoRoute = newRoute;
-    console.log(this.pseudoRoute);
   }
 
   isRecipes() {
