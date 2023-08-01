@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Route } from '../../utils';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Route } from '../shared';
 
 @Component({
-  selector: 'shared-header',
+  selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })

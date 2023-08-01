@@ -2,12 +2,32 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { RecipeBookModule, ShoppingListModule } from './features';
-import { SharedModule } from './shared';
+import { DropdownDirective } from './shared';
+import { HeaderComponent } from './header';
+import {
+  RecipeBookComponent,
+  RecipeDetailComponent,
+  RecipeItemComponent,
+  RecipeListComponent,
+} from './recipe-book';
+import {
+  ShoppingListComponent,
+  ShoppingListEditComponent,
+} from './shopping-list';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, ShoppingListModule, RecipeBookModule, SharedModule],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    RecipeBookComponent,
+    RecipeDetailComponent,
+    RecipeItemComponent,
+    RecipeListComponent,
+    ShoppingListComponent,
+    ShoppingListEditComponent,
+    DropdownDirective,
+  ],
+  imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent],
 })
