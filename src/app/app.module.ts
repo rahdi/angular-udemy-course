@@ -14,6 +14,7 @@ import {
   ShoppingListComponent,
   ShoppingListEditComponent,
 } from './shopping-list';
+import { ShoppingListService } from './shopping-list/shopping-list.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import {
     DropdownDirective,
   ],
   imports: [BrowserModule],
-  providers: [],
+  providers: [ShoppingListService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
