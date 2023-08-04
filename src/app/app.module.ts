@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { DropdownDirective } from './shared';
+import { DropdownDirective, ShoppingListService } from './shared';
 import { HeaderComponent } from './header';
 import {
   RecipeBookComponent,
@@ -14,7 +14,6 @@ import {
   ShoppingListComponent,
   ShoppingListEditComponent,
 } from './shopping-list';
-import { ShoppingListService } from './shopping-list/shopping-list.service';
 
 @NgModule({
   declarations: [

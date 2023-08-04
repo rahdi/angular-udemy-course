@@ -1,5 +1,5 @@
 import { EventEmitter } from '@angular/core';
-import { Ingredient } from '../shared';
+import { Ingredient } from '..';
 
 export class ShoppingListService {
   ingredientsChanged = new EventEmitter<Ingredient[]>();
@@ -13,8 +13,8 @@ export class ShoppingListService {
     return this.ingredients.slice();
   }
 
-  onAddIngredient(newIngredient: Ingredient) {
-    this.ingredients.push(newIngredient);
+  onAddIngredients(newIngredients: Ingredient[]) {
+    this.ingredients.push(...newIngredients);
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
 }
