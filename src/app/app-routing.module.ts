@@ -4,6 +4,7 @@ import {
   NoRecipeSelectedComponent,
   RecipeBookComponent,
   RecipeDetailComponent,
+  RecipeEditComponent,
 } from './recipe-book';
 import { ShoppingListComponent } from './shopping-list';
 import { Path } from './shared';
@@ -20,7 +21,9 @@ const appRoutes: Routes = [
     component: RecipeBookComponent,
     children: [
       { path: Path.Empty, component: NoRecipeSelectedComponent },
+      { path: Path.NewRecipe, component: RecipeEditComponent },
       { path: ':id', component: RecipeDetailComponent },
+      { path: `:id/${Path.EditRecipe}`, component: RecipeEditComponent },
     ],
   },
   { path: Path.ShoppingList, component: ShoppingListComponent },

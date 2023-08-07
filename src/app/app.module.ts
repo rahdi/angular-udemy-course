@@ -8,6 +8,7 @@ import {
   NoRecipeSelectedComponent,
   RecipeBookComponent,
   RecipeDetailComponent,
+  RecipeEditComponent,
   RecipeItemComponent,
   RecipeListComponent,
 } from './recipe-book';
@@ -31,6 +32,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ShoppingListEditComponent,
     DropdownDirective,
     NotFoundComponent,
+    RecipeEditComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [ShoppingListService],
