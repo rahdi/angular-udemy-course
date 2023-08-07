@@ -1,6 +1,7 @@
 export enum Path {
-  Home = '',
+  Empty = '',
   Recipes = 'recipes',
+  Recipe = 'recipe',
   ShoppingList = 'shopping-list',
   NotFound = 'not-found',
   Wildcard = '**',

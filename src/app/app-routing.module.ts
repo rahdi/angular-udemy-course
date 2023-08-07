@@ -1,17 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RecipeBookComponent } from './recipe-book';
+import {
+  NoRecipeSelectedComponent,
+  RecipeBookComponent,
+  RecipeDetailComponent,
+} from './recipe-book';
 import { ShoppingListComponent } from './shopping-list';
 import { Path } from './shared';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './not-found';
 
 const appRoutes: Routes = [
   {
-    path: Path.Home,
+    path: Path.Empty,
     redirectTo: Path.Recipes,
     pathMatch: 'full',
   },
-  { path: Path.Recipes, component: RecipeBookComponent },
+  {
+    path: Path.Recipes,
+    component: RecipeBookComponent,
+    children: [
+      { path: Path.Empty, component: NoRecipeSelectedComponent },
+      { path: `${Path.Recipe}/:id`, component: RecipeDetailComponent },
+    ],
+  },
   { path: Path.ShoppingList, component: ShoppingListComponent },
   { path: Path.NotFound, component: NotFoundComponent },
   {

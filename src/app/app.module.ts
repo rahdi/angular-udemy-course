@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { DropdownDirective, ShoppingListService } from './shared';
 import { HeaderComponent } from './header';
 import {
+  NoRecipeSelectedComponent,
   RecipeBookComponent,
   RecipeDetailComponent,
   RecipeItemComponent,
@@ -25,6 +26,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     RecipeDetailComponent,
     RecipeItemComponent,
     RecipeListComponent,
+    NoRecipeSelectedComponent,
     ShoppingListComponent,
     ShoppingListEditComponent,
     DropdownDirective,
