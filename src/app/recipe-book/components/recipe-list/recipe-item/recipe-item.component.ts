@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Recipe } from '../../../models';
-import { Path } from 'src/app/shared';
 
 @Component({
   selector: 'app-recipe-item',
@@ -10,5 +9,4 @@ import { Path } from 'src/app/shared';
 export class RecipeItemComponent {
   @Input() recipe!: Recipe;
   @Input() id!: number;
-  path = Path;
 }

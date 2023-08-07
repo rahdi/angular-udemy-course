@@ -20,7 +20,7 @@ const appRoutes: Routes = [
     component: RecipeBookComponent,
     children: [
       { path: Path.Empty, component: NoRecipeSelectedComponent },
-      { path: `${Path.Recipe}/:id`, component: RecipeDetailComponent },
+      { path: ':id', component: RecipeDetailComponent },
     ],
   },
   { path: Path.ShoppingList, component: ShoppingListComponent },
