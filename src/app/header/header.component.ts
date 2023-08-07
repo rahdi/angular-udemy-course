@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Route } from '../shared';
+import { Component } from '@angular/core';
+import { Path } from '../shared';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +7,5 @@ import { Route } from '../shared';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  @Output() changeRoute = new EventEmitter<Route>();
-
-  navigateToRecipes() {
-    this.changeRoute.emit(Route.Recipes);
-  }
-
-  navigateToShoppingList() {
-    this.changeRoute.emit(Route.ShoppingList);
-  }
+  path = Path;
 }

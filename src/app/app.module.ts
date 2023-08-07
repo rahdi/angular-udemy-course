@@ -14,6 +14,8 @@ import {
   ShoppingListComponent,
   ShoppingListEditComponent,
 } from './shopping-list';
+import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,9 @@ import {
     ShoppingListComponent,
     ShoppingListEditComponent,
     DropdownDirective,
+    NotFoundComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [ShoppingListService],
   bootstrap: [AppComponent],
 })

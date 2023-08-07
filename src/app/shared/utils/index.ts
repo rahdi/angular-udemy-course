@@ -1,1 +1,1 @@
-export { Route } from './enums';
+export { Path } from './enums';
