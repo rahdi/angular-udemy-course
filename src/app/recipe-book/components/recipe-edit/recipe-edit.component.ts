@@ -46,11 +46,7 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onCancel() {
-    if (typeof this.id === 'number' && !isNaN(this.id)) {
-      this.router.navigate([Path.Recipes, this.id]);
-    } else {
-      this.router.navigate([Path.Recipes]);
-    }
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
   onAddIngredient() {

@@ -28,7 +28,7 @@
             <a (click)="addIngredients(recipe.ingredients)">To Shopping List</a>
           </li>
           <li><a [routerLink]="path.EditRecipe">Edit Recipe</a></li>
-          <li><a>Delete Recipe</a></li>
+          <li><a (click)="onDeleteRecipe()">Delete Recipe</a></li>
         </ul>
       </div>
     </div>
