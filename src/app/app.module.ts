@@ -11,6 +11,7 @@ import {
   RecipeEditComponent,
   RecipeItemComponent,
   RecipeListComponent,
+  RecipeService,
 } from './recipe-book';
 import {
   ShoppingListComponent,
@@ -36,7 +37,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RecipeEditComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
