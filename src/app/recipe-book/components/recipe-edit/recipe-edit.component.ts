@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '../../models';
 import { RecipeService } from '../../recipe.service';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Path } from 'src/app/shared';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -16,6 +17,7 @@ export class RecipeEditComponent implements OnInit {
   recipeForm?: FormGroup;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private recipeService: RecipeService
   ) {}
@@ -23,7 +25,7 @@ export class RecipeEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(({ id }) => {
       this.recipe = this.recipeService.getRecipe(+id);
-      this.id = id;
+      this.id = +id;
       this.editMode = !!id;
       this.initForm();
     });
@@ -34,10 +36,20 @@ export class RecipeEditComponent implements OnInit {
 
     const { value: newRecipe } = this.recipeForm;
 
-    if (this.editMode && typeof this.id !== 'undefined') {
+    if (this.editMode && typeof this.id === 'number' && !isNaN(this.id)) {
       this.recipeService.updateRecipe(this.id, newRecipe);
     } else {
       this.recipeService.addRecipe(newRecipe);
+    }
+
+    this.onCancel();
+  }
+
+  onCancel() {
+    if (typeof this.id === 'number' && !isNaN(this.id)) {
+      this.router.navigate([Path.Recipes, this.id]);
+    } else {
+      this.router.navigate([Path.Recipes]);
     }
   }
 
