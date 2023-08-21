@@ -4,7 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { DropdownDirective, ShoppingListService } from './shared';
+import {
+  DropdownDirective,
+  LoadingSpinnerComponent,
+  ShoppingListService,
+} from './shared';
 import { HeaderComponent } from './header';
 import {
   NoRecipeSelectedComponent,
@@ -38,6 +42,7 @@ import { AuthComponent } from './auth';
     NotFoundComponent,
     RecipeEditComponent,
     AuthComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
