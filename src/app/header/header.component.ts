@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Path } from '../shared';
+import { DataStorageService, Path } from '../shared';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +8,10 @@ import { Path } from '../shared';
 })
 export class HeaderComponent {
   path = Path;
+
+  constructor(private dataStorageService: DataStorageService) {}
+
+  onSaveData() {
+    this.dataStorageService.storeRecipes();
+  }
 }
