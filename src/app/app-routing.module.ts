@@ -10,6 +10,7 @@ import {
 import { ShoppingListComponent } from './shopping-list';
 import { Path } from './shared';
 import { NotFoundComponent } from './not-found';
+import { AuthComponent } from './auth';
 
 const appRoutes: Routes = [
   {
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
     ],
   },
   { path: Path.ShoppingList, component: ShoppingListComponent },
+  { path: Path.Auth, component: AuthComponent },
   { path: Path.NotFound, component: NotFoundComponent },
   {
     path: Path.Wildcard,
