@@ -2,6 +2,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { User } from './user.model';
+import { Router } from '@angular/router';
+import { Path } from '../shared';
 
 export interface AuthResponseData {
   idToken: string;
@@ -16,7 +18,7 @@ export interface AuthResponseData {
 export class AuthService {
   user = new BehaviorSubject<User | null>(null); // we have access to previously emitted value, without subscription
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   signup(email: string, password: string) {
     return this.http
@@ -49,6 +51,11 @@ export class AuthService {
         catchError(this.handleError),
         tap(this.handleAuthentication.bind(this))
       );
+  }
+
+  logout() {
+    this.user.next(null);
+    this.router.navigate([`/${Path.Auth}`]);
   }
 
   private handleAuthentication({
