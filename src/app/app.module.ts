@@ -8,6 +8,7 @@ import {
   AlertComponent,
   DropdownDirective,
   LoadingSpinnerComponent,
+  PlaceholderDirective,
   ShoppingListService,
 } from './shared';
 import { HeaderComponent } from './header';
@@ -40,6 +41,7 @@ import { AuthComponent, AuthInterceptorService } from './auth';
     ShoppingListComponent,
     ShoppingListEditComponent,
     DropdownDirective,
+    PlaceholderDirective,
     NotFoundComponent,
     RecipeEditComponent,
     AuthComponent,
