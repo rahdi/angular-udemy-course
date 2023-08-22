@@ -5,6 +5,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import {
+  AlertComponent,
   DropdownDirective,
   LoadingSpinnerComponent,
   ShoppingListService,
@@ -43,6 +44,7 @@ import { AuthComponent, AuthInterceptorService } from './auth';
     RecipeEditComponent,
     AuthComponent,
     LoadingSpinnerComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
