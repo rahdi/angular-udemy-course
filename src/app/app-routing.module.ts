@@ -10,7 +10,7 @@ import {
 import { ShoppingListComponent } from './shopping-list';
 import { Path } from './shared';
 import { NotFoundComponent } from './not-found';
-import { AuthComponent } from './auth';
+import { AuthComponent, AuthGuard } from './auth';
 
 const appRoutes: Routes = [
   {
@@ -21,6 +21,7 @@ const appRoutes: Routes = [
   {
     path: Path.Recipes,
     component: RecipeBookComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: Path.Empty, component: NoRecipeSelectedComponent },
       { path: Path.NewRecipe, component: RecipeEditComponent },
