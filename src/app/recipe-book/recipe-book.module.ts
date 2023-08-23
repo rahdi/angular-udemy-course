@@ -8,9 +8,9 @@ import {
   RecipeListComponent,
 } from './components';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeBookRoutingModule } from './recipe-book-routing.module';
+import { SharedModule } from '../shared/shared.module'; // due to circular dependency
 
 @NgModule({
   declarations: [
@@ -24,8 +24,8 @@ import { RecipeBookRoutingModule } from './recipe-book-routing.module';
   imports: [
     RouterModule,
     RecipeBookRoutingModule,
-    CommonModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   // exports: [
   //   RecipeBookComponent,

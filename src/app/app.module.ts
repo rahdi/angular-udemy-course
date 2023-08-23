@@ -4,13 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import {
-  AlertComponent,
-  DropdownDirective,
-  LoadingSpinnerComponent,
-  PlaceholderDirective,
-  ShoppingListService,
-} from './shared';
+import { ShoppingListService, SharedModule } from './shared';
 import { HeaderComponent } from './header';
 import { RecipeBookModule, RecipeService } from './recipe-book';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,18 +16,15 @@ import { ShoppingListModule } from './shopping-list';
   declarations: [
     AppComponent,
     HeaderComponent,
-    DropdownDirective,
-    PlaceholderDirective,
     NotFoundComponent,
     AuthComponent,
-    LoadingSpinnerComponent,
-    AlertComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SharedModule,
     ShoppingListModule,
     RecipeBookModule,
     AppRoutingModule, // this should be last to enable proper recipes routes. The routing arrays are concatenated in the order given here
