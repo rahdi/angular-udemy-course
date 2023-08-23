@@ -8,6 +8,7 @@ import { HeaderComponent } from './header';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CoreModule } from './core.module';
+// import { LoggingService } from './logging.service';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, NotFoundComponent],
@@ -18,6 +19,7 @@ import { CoreModule } from './core.module';
     CoreModule,
     AppRoutingModule, // this should be last to enable proper recipes routes. The routing arrays are concatenated in the order given here
   ],
+  // providers: [LoggingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

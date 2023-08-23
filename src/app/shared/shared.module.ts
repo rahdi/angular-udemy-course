@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { AlertComponent, LoadingSpinnerComponent } from './components';
 import { DropdownDirective, PlaceholderDirective } from './directives';
 import { CommonModule } from '@angular/common';
+// import { LoggingService } from '../logging.service';
 
 @NgModule({
   declarations: [
@@ -18,5 +19,6 @@ import { CommonModule } from '@angular/common';
     DropdownDirective,
     CommonModule,
   ],
+  // providers: [LoggingService],
 })
 export class SharedModule {}
