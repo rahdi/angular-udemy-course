@@ -10,9 +10,11 @@ import {
 import { RecipesResolverService } from './recipes-resolver.service';
 import { AuthGuard } from '../auth/auth.guard'; // importing from folder creates error (possible circular dependency :F)
 
+// in order to enable lazy loading, the feature modules have to define their own routes
+
 const routes: Routes = [
   {
-    path: Path.Recipes,
+    path: Path.Empty,
     component: RecipeBookComponent,
     canActivate: [AuthGuard],
     children: [

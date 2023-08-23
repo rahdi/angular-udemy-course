@@ -9,6 +9,25 @@ const appRoutes: Routes = [
     redirectTo: Path.Recipes,
     pathMatch: 'full',
   },
+  {
+    path: Path.Recipes,
+    loadChildren: () =>
+      import('./recipe-book/recipe-book.module').then(
+        (module) => module.RecipeBookModule
+      ),
+  },
+  {
+    path: Path.Auth,
+    loadChildren: () =>
+      import('./auth/auth.module').then((module) => module.AuthModule),
+  },
+  {
+    path: Path.ShoppingList,
+    loadChildren: () =>
+      import('./shopping-list/shopping-list.module').then(
+        (module) => module.ShoppingListModule
+      ),
+  },
   { path: Path.NotFound, component: NotFoundComponent },
   {
     path: Path.Wildcard,

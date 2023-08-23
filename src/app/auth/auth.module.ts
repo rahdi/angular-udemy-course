@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     FormsModule,
     SharedModule,
-    RouterModule.forChild([{ path: Path.Auth, component: AuthComponent }]),
+    RouterModule.forChild([{ path: Path.Empty, component: AuthComponent }]),
   ],
   exports: [RouterModule],
 })

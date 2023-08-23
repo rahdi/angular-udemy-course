@@ -6,7 +6,7 @@ import { ShoppingListComponent } from './shopping-list.component';
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: Path.ShoppingList, component: ShoppingListComponent },
+      { path: Path.Empty, component: ShoppingListComponent },
     ]),
   ],
   exports: [RouterModule],
