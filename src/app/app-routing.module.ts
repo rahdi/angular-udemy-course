@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Path } from './shared';
 import { NotFoundComponent } from './not-found';
-import { AuthComponent } from './auth';
 
 const appRoutes: Routes = [
   {
@@ -10,7 +9,6 @@ const appRoutes: Routes = [
     redirectTo: Path.Recipes,
     pathMatch: 'full',
   },
-  { path: Path.Auth, component: AuthComponent },
   { path: Path.NotFound, component: NotFoundComponent },
   {
     path: Path.Wildcard,
