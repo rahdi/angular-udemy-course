@@ -36,11 +36,11 @@ import { AuthComponent, AuthInterceptorService } from './auth';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RecipeBookModule,
+    AppRoutingModule, // this should be last to enable proper recipes routes. The routing arrays are concatenated in the order given here
   ],
   providers: [
     ShoppingListService,

@@ -10,6 +10,7 @@ import {
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RecipeBookRoutingModule } from './recipe-book-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,14 +21,19 @@ import { ReactiveFormsModule } from '@angular/forms';
     RecipeEditComponent,
     NoRecipeSelectedComponent,
   ],
-  imports: [RouterModule, CommonModule, ReactiveFormsModule],
-  exports: [
-    RecipeBookComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    RecipeListComponent,
-    RecipeEditComponent,
-    NoRecipeSelectedComponent,
+  imports: [
+    RouterModule,
+    RecipeBookRoutingModule,
+    CommonModule,
+    ReactiveFormsModule,
   ],
+  // exports: [
+  //   RecipeBookComponent,
+  //   RecipeDetailComponent,
+  //   RecipeItemComponent,
+  //   RecipeListComponent,
+  //   RecipeEditComponent,
+  //   NoRecipeSelectedComponent,
+  // ], if all of the components are imported here in separate routing module, they don't have to be exported
 })
 export class RecipeBookModule {}
