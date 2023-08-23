@@ -4,6 +4,7 @@ import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
 import { Path } from '../shared';
+import { environment } from '../environments/environment';
 
 export interface AuthResponseData {
   idToken: string;
@@ -25,7 +26,7 @@ export class AuthService {
     return this.http
       .post<AuthResponseData>(
         // link from Firebase REST API docs
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCYYHrQbbkTTEleoSXoNSUXmt1ajHuRFQs', // Web API Key from my Firebase Project Settings
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseAPIKey}`, // Web API Key from my Firebase Project Settings
         {
           email,
           password,
@@ -41,7 +42,7 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCYYHrQbbkTTEleoSXoNSUXmt1ajHuRFQs',
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebaseAPIKey}`,
         {
           email,
           password,
