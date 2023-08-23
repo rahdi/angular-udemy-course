@@ -12,15 +12,7 @@ import {
   ShoppingListService,
 } from './shared';
 import { HeaderComponent } from './header';
-import {
-  NoRecipeSelectedComponent,
-  RecipeBookComponent,
-  RecipeDetailComponent,
-  RecipeEditComponent,
-  RecipeItemComponent,
-  RecipeListComponent,
-  RecipeService,
-} from './recipe-book';
+import { RecipeBookModule, RecipeService } from './recipe-book';
 import {
   ShoppingListComponent,
   ShoppingListEditComponent,
@@ -33,17 +25,11 @@ import { AuthComponent, AuthInterceptorService } from './auth';
   declarations: [
     AppComponent,
     HeaderComponent,
-    RecipeBookComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    RecipeListComponent,
-    NoRecipeSelectedComponent,
     ShoppingListComponent,
     ShoppingListEditComponent,
     DropdownDirective,
     PlaceholderDirective,
     NotFoundComponent,
-    RecipeEditComponent,
     AuthComponent,
     LoadingSpinnerComponent,
     AlertComponent,
@@ -54,6 +40,7 @@ import { AuthComponent, AuthInterceptorService } from './auth';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RecipeBookModule,
   ],
   providers: [
     ShoppingListService,
