@@ -13,20 +13,15 @@ import {
 } from './shared';
 import { HeaderComponent } from './header';
 import { RecipeBookModule, RecipeService } from './recipe-book';
-import {
-  ShoppingListComponent,
-  ShoppingListEditComponent,
-} from './shopping-list';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthComponent, AuthInterceptorService } from './auth';
+import { ShoppingListModule } from './shopping-list';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingListEditComponent,
     DropdownDirective,
     PlaceholderDirective,
     NotFoundComponent,
@@ -39,6 +34,7 @@ import { AuthComponent, AuthInterceptorService } from './auth';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ShoppingListModule,
     RecipeBookModule,
     AppRoutingModule, // this should be last to enable proper recipes routes. The routing arrays are concatenated in the order given here
   ],
