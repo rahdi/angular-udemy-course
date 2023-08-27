@@ -7,12 +7,13 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable, map, take, tap } from 'rxjs';
-import { AuthService } from './auth.service';
 import { Path } from '../shared';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../store/app.reducer'
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private router: Router, private store:Store<fromApp.AppState>) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -22,8 +23,9 @@ export class AuthGuard implements CanActivate {
     UrlTree |
     Observable<boolean | UrlTree> |
     Promise<boolean | UrlTree> {
-    return this.authService.user.pipe(
+    return this.store.select('auth').pipe(
       take(1),
+      map(authState => authState.user),
       map((user) => {
         const isAuth = !!user
         if (isAuth) return true;
