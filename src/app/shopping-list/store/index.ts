@@ -1,2 +1,2 @@
-export { ShoppingListReducer } from './shopping-list.reducer';
+export { shoppingListReducer } from './shopping-list.reducer';
 export * as ShoppingListActions from './shopping-list.actions';
