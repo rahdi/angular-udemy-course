@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CoreModule } from './core.module';
 import * as fromApp from './store/app.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './auth/store/auth.effects';
 // import { LoggingService } from './logging.service';
 
 @NgModule({
@@ -21,6 +23,7 @@ import * as fromApp from './store/app.reducer';
     CoreModule,
     AppRoutingModule, // this should be last to enable proper recipes routes. The routing arrays are concatenated in the order given here
     StoreModule.forRoot(fromApp.appReducer),
+    EffectsModule.forRoot([AuthEffects]),
   ],
   // providers: [LoggingService],
   bootstrap: [AppComponent],
