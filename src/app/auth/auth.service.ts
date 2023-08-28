@@ -1,10 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
-import { Path } from '../shared';
-import { environment } from '../environments/environment';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../store/app.reducer';
 import * as AuthActions from './store/auth.actions';
@@ -23,44 +21,7 @@ export class AuthService {
   // user = new BehaviorSubject<User | null>(null); // we have access to previously emitted value, without subscription
   private tokenExpirationTimer?: NodeJS.Timeout;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private store: Store<fromApp.AppState>
-  ) {}
-
-  signup(email: string, password: string) {
-    return this.http
-      .post<AuthResponseData>(
-        // link from Firebase REST API docs
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseAPIKey}`, // Web API Key from my Firebase Project Settings
-        {
-          email,
-          password,
-          returnSecureToken: true,
-        }
-      )
-      .pipe(
-        catchError(this.handleError),
-        tap(this.handleAuthentication.bind(this))
-      );
-  }
-
-  login(email: string, password: string) {
-    return this.http
-      .post<AuthResponseData>(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebaseAPIKey}`,
-        {
-          email,
-          password,
-          returnSecureToken: true,
-        }
-      )
-      .pipe(
-        catchError(this.handleError),
-        tap(this.handleAuthentication.bind(this))
-      );
-  }
+  constructor(private store: Store<fromApp.AppState>) {}
 
   autoLogin() {
     const userData = localStorage.getItem('userData');
@@ -86,7 +47,7 @@ export class AuthService {
     if (loadedUser.token) {
       // this.user.next(loadedUser);
       this.store.dispatch(
-        new AuthActions.Login({
+        new AuthActions.AuthenticateSuccess({
           email: loadedUser.email,
           userId: loadedUser.id,
           token: loadedUser.token,
@@ -102,7 +63,6 @@ export class AuthService {
   logout() {
     // this.user.next(null);
     this.store.dispatch(new AuthActions.Logout());
-    this.router.navigate([`/${Path.Auth}`]);
     localStorage.removeItem('userData');
     if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
@@ -126,7 +86,7 @@ export class AuthService {
     const user = new User(email, localId, idToken, expirationDate);
     // this.user.next(user);
     this.store.dispatch(
-      new AuthActions.Login({
+      new AuthActions.AuthenticateSuccess({
         email,
         userId: localId,
         token: idToken,
