@@ -15,6 +15,7 @@ import { CoreModule } from './core.module';
 import * as fromApp from './store/app.reducer';
 import { AuthEffects } from './auth/store/auth.effects';
 import { environment } from './environments/environment';
+import { RecipeBookEffects } from './recipe-book/store/recipe-book.effects';
 // import { LoggingService } from './logging.service';
 
 @NgModule({
@@ -26,7 +27,7 @@ import { environment } from './environments/environment';
     CoreModule,
     AppRoutingModule, // this should be last to enable proper recipes routes. The routing arrays are concatenated in the order given here
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, RecipeBookEffects]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
   ],
