@@ -6,6 +6,7 @@ import { RecipeService } from '../../recipe.service';
 import { Store } from '@ngrx/store';
 import { ShoppingListActions } from 'src/app/shopping-list/store';
 import * as fromApp from 'src/app/store/app.reducer';
+import { map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -25,10 +26,20 @@ export class RecipeDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(({ id }) => {
-      this.recipe = this.recipeService.getRecipe(+id);
-      this.id = +id;
-    });
+    this.route.params
+      .pipe(
+        map((params) => +params['id']),
+        switchMap((id) => {
+          this.id = +id;
+          return this.store.select('recipeBook');
+        }),
+        map((recipesState) =>
+          recipesState.recipes.find((_, i) => i === this.id)
+        )
+      )
+      .subscribe((recipe) => {
+        this.recipe = recipe;
+      });
   }
 
   addIngredients(ingredients: Ingredient[]) {
