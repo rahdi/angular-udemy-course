@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/app/environments/environment';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../user.model';
 
 export interface AuthResponseData {
   idToken: string;
@@ -15,14 +16,20 @@ export interface AuthResponseData {
   registered?: boolean;
 }
 
-const handleAuthentication = (resData: AuthResponseData) => {
-  const expirationDate = new Date(
-    new Date().getTime() + +resData.expiresIn * 1000
-  );
+const handleAuthentication = ({
+  email,
+  localId,
+  idToken,
+  expiresIn,
+}: AuthResponseData) => {
+  const expirationDate = new Date(new Date().getTime() + +expiresIn * 1000);
+  const user = new User(email, localId, idToken, expirationDate);
+  localStorage.setItem('userData', JSON.stringify(user));
+
   return new AuthActions.AuthenticateSuccess({
-    email: resData.email,
-    userId: resData.localId,
-    token: resData.idToken,
+    email,
+    userId: localId,
+    token: idToken,
     expirationDate,
   });
 };
@@ -101,6 +108,56 @@ export class AuthEffects {
         ofType(AuthActions.AUTHENTICATE_SUCCESS, AuthActions.LOGOUT),
         tap(() => {
           this.router.navigate(['/']);
+        })
+      ),
+    { dispatch: false }
+  );
+
+  autoLogin = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.AUTO_LOGIN),
+      map(() => {
+        const userData = localStorage.getItem('userData');
+
+        if (!userData) return { type: 'DUMMY' };
+
+        const parsedUserData = <
+          Pick<User, 'email' | 'id'> & {
+            _token: string;
+            _tokenExpirationDate: string;
+          }
+        >JSON.parse(userData);
+
+        const { email, id, _token, _tokenExpirationDate } = parsedUserData;
+
+        const loadedUser = new User(
+          email,
+          id,
+          _token,
+          new Date(_tokenExpirationDate)
+        );
+
+        if (loadedUser.token) {
+          // this.user.next(loadedUser);
+          return new AuthActions.AuthenticateSuccess({
+            email: loadedUser.email,
+            userId: loadedUser.id,
+            token: loadedUser.token,
+            expirationDate: new Date(_tokenExpirationDate),
+          });
+        }
+
+        return { type: 'DUMMY' };
+      })
+    )
+  );
+
+  authLogout = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.LOGOUT),
+        tap(() => {
+          localStorage.removeItem('userData');
         })
       ),
     { dispatch: false }
